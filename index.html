@@ -9,22 +9,26 @@
 <body>
     
     <div class="createMsg--container">
-        <form action="" class="msgForm">
-            <label for="message">Secret Message</label>
+        <form action="" class="msgForm card">
+            <label for="message" class="subtitle">Enter a Secret Message</label>
             <input type="text" name="message" id="msg--input" placeholder="Enter Secret Message">
             <button>Create</button>
         </form>
     </div>
 
     <div class="link--container hidden">
-        <label for="link">Share this link with a friend</label>
-        <input type="link" name="link" id="link--input">
-        <button class="button--copy">Copy</button>
+        <div class="card">
+            <label for="link">Share this link with a friend</label>
+            <input type="link" name="link" id="link--input">
+            <button class="button--copy">Copy</button>
+        </div>
     </div>
 
     <div class="displayMsg--container hidden">
-        <h1></h1>
-        <a class="home" href="">Create your own message</a>
+        <div class="card">
+            <h1></h1>
+            <a class="home" href="">Create your own message</a>
+        </div>
     </div>
 
     <script src="app.js"></script>

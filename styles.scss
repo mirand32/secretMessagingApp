@@ -1,10 +1,52 @@
-.hidden{
-    display: none;
-}
-
-.createMsg--container{
+.createMsg--container,
+.link--container,
+.displayMsg--container{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    box-shadow:3px 3px 5px 6px #ccc;
+    max-width:600px;
+    width:40%
+}
+
+.card > *{
+    margin-bottom: 10px;
+}
+
+.card input{
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.subtitle{
+    color: #969DA2;
+}
+
+button{
+    color: white;
+    background:#4B9A9A;
+    border:none;
+    border-radius: 5px;
+    width: 100px;
+    padding: 10px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+button:hover{
+    border: 1px solid black;
+    background: white;
+    color: #4B9A9A;
+    cursor: pointer;
+}
+
+.hidden{
+    display: none;
 }

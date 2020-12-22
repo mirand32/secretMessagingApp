@@ -5,7 +5,7 @@ if (window.location.hash) {
 }
 
 function displayMsg(msg){
-    document.querySelector(".msgForm").classList.add("hidden")
+    document.querySelector(".createMsg--container").classList.add("hidden")
     document.querySelector(".displayMsg--container").classList.remove("hidden")
     document.querySelector(".displayMsg--container").querySelector("h1").innerHTML = `${msg}`
 }
@@ -19,7 +19,7 @@ function handleFormSubmit(e){
     e.preventDefault()
     const link = encryptMsg(document.querySelector("#msg--input").value)
     document.querySelector("#link--input").value=link
-    document.querySelector(".msgForm").classList.add("hidden")
+    document.querySelector(".createMsg--container").classList.add("hidden")
     document.querySelector(".link--container").classList.remove("hidden")
     this.reset()
 }
