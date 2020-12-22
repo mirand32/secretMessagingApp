@@ -1,11 +1,20 @@
 const msgForm =document.querySelector(".msgForm")
 const copyBtn=document.querySelector(".button--copy")
 const linkContainer=document.querySelector(".link--container")
+const msgContainer=document.querySelector(".displayMsg--container")
+const home = document.querySelector(".home")
+home.href = "file://" + window.location.pathname
 
 if (window.location.hash){
-    const secretMsg=window.location.hash.slice(1)
+    const hash=window.location.hash.slice(1)
+    const decoded=decryptMsg(hash)
     msgForm.classList.add("hidden")
-    linkContainer.classList.remove("hidden")
+    displayMsg(decoded)
+}
+
+function displayMsg(msg){
+    msgContainer.classList.remove("hidden")
+    msgContainer.querySelector("h1").innerHTML=`${msg}`
 }
 
 function encryptMsg(text){
