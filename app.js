@@ -1,40 +1,26 @@
-const msgForm =document.querySelector(".msgForm")
-const copyBtn=document.querySelector(".button--copy")
-const linkContainer=document.querySelector(".link--container")
-const msgContainer=document.querySelector(".displayMsg--container")
-const home = document.querySelector(".home")
-home.href = "file://" + window.location.pathname
-
-if (window.location.hash){
-    const hash=window.location.hash.slice(1)
-    const decoded=decryptMsg(hash)
-    msgForm.classList.add("hidden")
-    displayMsg(decoded)
+if (window.location.hash) {
+    const { hash } = window.location
+    const codedMsg = atob(hash.slice(1))
+    displayMsg(codedMsg)
 }
 
 function displayMsg(msg){
-    msgContainer.classList.remove("hidden")
-    msgContainer.querySelector("h1").innerHTML=`${msg}`
+    document.querySelector(".msgForm").classList.add("hidden")
+    document.querySelector(".displayMsg--container").classList.remove("hidden")
+    document.querySelector(".displayMsg--container").querySelector("h1").innerHTML = `${msg}`
 }
 
 function encryptMsg(text){
     const encrypted = btoa(text)
-    const path = window.location.pathname
-    return "file://" +path + "#" + encrypted
-}
-
-function decryptMsg(text){
-    const decrypted = atob(text)
-    return decrypted
+    return window.location + "#" + encrypted
 }
 
 function handleFormSubmit(e){
     e.preventDefault()
-    const msg=document.querySelector("#msg--input").value
-    const link = encryptMsg(msg)
+    const link = encryptMsg(document.querySelector("#msg--input").value)
     document.querySelector("#link--input").value=link
-    msgForm.classList.add("hidden")
-    linkContainer.classList.remove("hidden")
+    document.querySelector(".msgForm").classList.add("hidden")
+    document.querySelector(".link--container").classList.remove("hidden")
     this.reset()
 }
 
@@ -45,5 +31,5 @@ function copyLink(e){
     document.execCommand("copy")
 }
 
-msgForm.addEventListener("submit", handleFormSubmit)
-copyBtn.addEventListener("click", copyLink)
+document.querySelector(".msgForm").addEventListener("submit", handleFormSubmit)
+document.querySelector(".button--copy").addEventListener("click", copyLink)
